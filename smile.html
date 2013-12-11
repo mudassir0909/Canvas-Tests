@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Smiley</title>
+  </head>
+  <body>
+    <h3>My reaction after viewing this page in browser...</h3>
+    <canvas id="mycanvas" width='600' height="200"></canvas>
+    <script type="text/javascript">
+      var canvas = document.getElementById("mycanvas");
+      var context = canvas.getContext('2d');
+
+      function drawArc(options){        
+        context.beginPath();
+        context.arc(options.x, options.y, options.radius, options.startAngle, options.endAngle, true);
+        context.lineWidth = options.lineWidth;
+        context.strokeStyle = options.strokeStyle;
+        context.stroke();
+      }
+
+      function drawCircle(options){
+        options.startAngle = 0;
+        options.endAngle = 2*Math.PI;
+        drawArc(options);
+      }
+
+      drawCircle({x: canvas.width/2, y: canvas.height/2, radius: 70, lineWidth: 10, strokeStyle: '#070'});
+      drawCircle({x: 270, y: 80, radius: 10, lineWidth: 10, strokeStyle: '#070'});
+      drawCircle({x: 330, y: 80, radius: 10, lineWidth: 10, strokeStyle: '#070'});
+      drawArc({x: 300, y: 90, radius: 50, lineWidth: 10, strokeStyle: "#070", 
+               startAngle: 0.8*Math.PI, endAngle: 0.2*Math.PI})
+
+    </script>
+  </body>
+</html>
